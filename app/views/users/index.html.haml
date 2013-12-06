@@ -6,7 +6,11 @@
   %thead
     %tr
       %th Email
+      %th
   %tbody
     -@users.each do |user|
       %tr
         %td=user.email
+        %td
+          -if user != current_user
+            =link_to fa_icon('trash-o'), user_path(user), method: 'delete', data: { confirm: "Do you really want to delete '#{user.email}'?"}
