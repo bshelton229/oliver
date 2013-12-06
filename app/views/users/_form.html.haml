@@ -1,0 +1,8 @@
+.row
+  .col-xs-6
+    =simple_form_for @user do |f|
+      =f.error_notification
+
+      =f.input :email, autofocus: true
+      =f.input :password
+      =f.button :submit, class: 'btn-primary'

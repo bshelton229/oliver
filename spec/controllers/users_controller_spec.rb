@@ -16,5 +16,26 @@ describe UsersController do
       expect(response).to be_successful
       expect(assigns(:users)).to be_an ActiveRecord::Relation
     end
+
+    it 'Should allow us to create a user' do
+      post :create, user: { email: 'new@user.com', password: 'myfavoritepassword' }
+      expect(response).to redirect_to(users_path)
+      expect(assigns(:user)).to be_valid
+    end
+
+    it 'Should allow us to delete a user' do
+      user2 = create(:user, email: 'another@user.com')
+      user2_id = user2.id
+      delete :destroy, id: user2.id
+      expect(response).to redirect_to(users_path)
+      expect(assigns(:user)).to_not be_persisted
+      expect(User.find_by id: user2_id).to be_nil
+    end
+
+    it 'Should not let us delete the active user' do
+      delete :destroy, id: user.id
+      expect(response).to redirect_to users_path
+      expect(assigns(:user)).to be_persisted
+    end
   end
 end
