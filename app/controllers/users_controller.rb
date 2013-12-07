@@ -52,7 +52,10 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      p = params.require(:user).permit(:email, :password, :password_confirmation, :name)
+      # Don't pass the password through if it's blank, to keep it the same
+      p[:password] = nil if p[:password].blank?
+      p
     end
 
     def check_current

@@ -52,5 +52,12 @@ describe UsersController do
       expect(assigns(:user).email).to eq("new@email.com")
       expect(assigns(:user)).to be_persisted
     end
+
+    it 'Should be able to update a user without changing the password' do
+      user2 = create(:user, email: 'hi@user.com', name: 'Name1')
+      patch :update, id: user2.id, user: { name: 'Name2' }
+      expect(assigns(:user)).to be_persisted
+      expect(assigns(:user).name).to eq('Name2')
+    end
   end
 end

@@ -12,12 +12,14 @@
         %thead
           %tr
             %th Email
+            %th Name
             %th Last login
             %th
         %tbody.list
           -@users.each do |user|
             %tr
               %td.email=user.email
+              %td.name=user.name
               %td=user.last_login
               %td.action-links
                 -if user != current_user
