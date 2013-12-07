@@ -26,4 +26,4 @@
                   =link_to fa_icon('pencil'), edit_user_path(user)
                   =link_to fa_icon('trash-o'), user_path(user), method: 'delete', data: { confirm: "Do you really want to delete '#{user.email}'?"}
                 -else
-                  you
+                  =link_to fa_icon('pencil'), edit_user_profile_path

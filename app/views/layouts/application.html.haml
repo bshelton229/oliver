@@ -21,7 +21,7 @@
           .collapse.navbar-collapse
             -if current_user
               =navbar
-              %p.navbar-widget.pull-right #{current_user.email} #{link_to '[logout]', destroy_user_session_path, method: 'delete'}
+              %p.navbar-widget.pull-right #{link_to current_user.email, edit_user_profile_path} #{link_to '[logout]', destroy_user_session_path, method: 'delete'}
 
 
       .container

@@ -1,0 +1,11 @@
+.page-header
+  %h1 Update profile for #{@user.email}
+.row
+  .col-xs-12.col-lg-6
+    =simple_form_for @user, url: user_profile_path, method: 'patch' do |f|
+      =f.input :email
+      =f.input :name
+      %fieldset
+        %legend Password
+        =f.input :password
+      =f.button :submit, class: 'btn-primary'
