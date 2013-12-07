@@ -2,16 +2,24 @@
   %h1
     System Users
     =link_to fa_icon('plus')+' New', new_user_path, class: 'pull-right btn btn-primary'
-%table.table.table-striped
-  %thead
-    %tr
-      %th Email
-      %th
-  %tbody
-    -@users.each do |user|
-      %tr
-        %td=user.email
-        %td.action-links
-          -if user != current_user
-            =link_to fa_icon('pencil'), edit_user_path(user)
-            =link_to fa_icon('trash-o'), user_path(user), method: 'delete', data: { confirm: "Do you really want to delete '#{user.email}'?"}
+#users-list
+  .row
+    .col-xs-12.col-lg-6
+      %input.search.form-control{placeholder: 'Search'}
+  .row
+    .col-xs-12
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Email
+            %th
+        %tbody.list
+          -@users.each do |user|
+            %tr
+              %td.email=user.email
+              %td.action-links
+                -if user != current_user
+                  =link_to fa_icon('pencil'), edit_user_path(user)
+                  =link_to fa_icon('trash-o'), user_path(user), method: 'delete', data: { confirm: "Do you really want to delete '#{user.email}'?"}
+                -else
+                  you
