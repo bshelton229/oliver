@@ -11,7 +11,7 @@
     -@users.each do |user|
       %tr
         %td=user.email
-        %td
+        %td.action-links
           -if user != current_user
             =link_to fa_icon('pencil'), edit_user_path(user)
             =link_to fa_icon('trash-o'), user_path(user), method: 'delete', data: { confirm: "Do you really want to delete '#{user.email}'?"}
