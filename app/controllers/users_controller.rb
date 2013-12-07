@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :check_current, only: [:update, :destroy]
+
   def index
     @users = User.all
     respond_to do |format|
@@ -24,9 +26,25 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
+  def edit
     @user = User.find params[:id]
-    @user.destroy if @user != current_user
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to users_path }
+      else
+        format.html { render 'edit' }
+      end
+    end
+  end
+
+  def destroy
+    @user.destroy
     respond_to do |format|
       format.html { redirect_to users_path }
     end
@@ -35,5 +53,10 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation)
+    end
+
+    def check_current
+      @user = User.find params[:id]
+      redirect_to users_path if @user == current_user
     end
 end

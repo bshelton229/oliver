@@ -13,4 +13,5 @@
         %td=user.email
         %td
           -if user != current_user
+            =link_to fa_icon('pencil'), edit_user_path(user)
             =link_to fa_icon('trash-o'), user_path(user), method: 'delete', data: { confirm: "Do you really want to delete '#{user.email}'?"}

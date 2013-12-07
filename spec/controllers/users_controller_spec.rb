@@ -37,5 +37,20 @@ describe UsersController do
       expect(response).to redirect_to users_path
       expect(assigns(:user)).to be_persisted
     end
+
+    it 'Should not let us update the logged in user' do
+      patch :update, id: user.id, user: { email: 'mynew@email.com' }
+      expect(response).to redirect_to(users_path)
+      expect(User.find(user.id).email).to_not eq('mynew@email.com')
+    end
+
+    it 'Should be able to update other users' do
+      user2 = create(:user, email: 'another@email.com')
+      patch :update, id: user2.id, user: { email: 'new@email.com' }
+      expect(response).to redirect_to users_path
+      expect(assigns(:user)).to be_valid
+      expect(assigns(:user).email).to eq("new@email.com")
+      expect(assigns(:user)).to be_persisted
+    end
   end
 end
