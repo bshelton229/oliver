@@ -1,7 +1,8 @@
 language: ruby
 services: postgresql
 before_script:
-  - cp config/database.travis.yml config/database.yml
   - psql -c 'create database oliver_test;' -U postgres
+env:
+  - DATABASE_URL=postgresql://postgres@localhost/oliver_test
 rvm:
   - 2.0.0
