@@ -9,7 +9,7 @@ gem "devise", "~> 3.2.2"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-gem "bootstrap-sass", "~> 3.0.2.1"
+gem "bootstrap-sass", "~> 3.0.3.0"
 gem "haml", "~> 4.0.4"
 gem "will_paginate", "~> 3.0.5"
 gem "font-awesome-rails"

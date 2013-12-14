@@ -29,7 +29,7 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
-    bootstrap-sass (3.0.2.1)
+    bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
     builder (3.1.4)
     capybara (2.1.0)
@@ -170,7 +170,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 3.0.2.1)
+  bootstrap-sass (~> 3.0.3.0)
   capybara (~> 2.1.0)
   devise (~> 3.2.2)
   factory_girl_rails (~> 4.3.0)
