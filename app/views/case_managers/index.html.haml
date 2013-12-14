@@ -1,0 +1,14 @@
+.page-header
+  %h1 Case Managers
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Phone
+      %th Email
+  %tbody
+    -@case_managers.each do |case_manager|
+      %tr
+        %td.name=case_manager.full_name
+        %td.phone=case_manager.phone
+        %td.email=case_manager.email
