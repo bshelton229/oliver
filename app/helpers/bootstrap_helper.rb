@@ -3,6 +3,11 @@ module BootstrapHelper
   def navbar_items
     [
       {
+        name: 'Case Managers',
+        link: case_managers_path,
+        active: -> { controller_name == 'case_managers' }
+      },
+      {
         name: 'Users',
         link: users_path,
         active: -> { controller_name == 'users' }
