@@ -26,11 +26,9 @@ class CaseManagersController < ApplicationController
 
     respond_to do |format|
       if @case_manager.save
-        format.html { redirect_to @case_manager, notice: 'Case manager was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @case_manager }
+        format.html { redirect_to case_managers_path, notice: 'Case manager was successfully created.' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @case_manager.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,11 +38,9 @@ class CaseManagersController < ApplicationController
   def update
     respond_to do |format|
       if @case_manager.update(case_manager_params)
-        format.html { redirect_to @case_manager, notice: 'Case manager was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to case_managers_path, notice: 'Case manager was successfully updated.' }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @case_manager.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,7 +51,6 @@ class CaseManagersController < ApplicationController
     @case_manager.destroy
     respond_to do |format|
       format.html { redirect_to case_managers_url }
-      format.json { head :no_content }
     end
   end
 

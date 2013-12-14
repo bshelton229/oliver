@@ -1,0 +1,8 @@
+.row
+  .col-xs-12.col-lg-6
+    =simple_form_for @case_manager do |f|
+      =f.input :first_name, autofocus: true
+      =f.input :last_name
+      =f.input :phone
+      =f.input :email
+      =f.button :submit, class: 'btn-primary'
